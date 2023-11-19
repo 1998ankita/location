@@ -161,11 +161,12 @@ class MapScreenState extends State<MapScreen> {
   MapsRoutes route = new MapsRoutes();
   DistanceCalculator distanceCalculator = new DistanceCalculator();
   createPloyline() async {
-    print("createPloyline---------------------");
+    print("createPloyline--------------pointssss-------");
+    print("createPloyline--------------pointssss-------"+points.toString());
     if (points.length >= 2) {
       print("createPloyline  1");
 
-      await route.drawRoute(points, 'Test routes', Colors.blue, "AIzaSyAHtsdxULNcLUBccEx2FZa4tMSuw1kgoso",
+      await route.drawRoute(points, 'Test routes', Colors.blue, googleApiKey,
           travelMode: TravelModes.driving);
       _markers.add(Marker(
           markerId: const MarkerId('SomeId'),
@@ -293,7 +294,7 @@ class MapScreenState extends State<MapScreen> {
                             // darkMode: true,
                             controller: searchlocationController,
                             // key: MyGlobalKeys.searchLocationKey,
-                            apiKey: "AIzaSyAHtsdxULNcLUBccEx2FZa4tMSuw1kgoso",
+                            apiKey: googleApiKey,
                             onSelected: (value) async {
                               var temp = await value.geolocation;
                               if (temp != null)
@@ -325,9 +326,9 @@ class MapScreenState extends State<MapScreen> {
                                 selectedCurrentLong = long;
                                 points = [];
                                 points.add(LatLng(currentLat, currentLong));
-                                points.add(LatLng(
-                                    selectedCurrentLat, selectedCurrentLong));
-                                createPloyline();
+                                points.add(LatLng(selectedCurrentLat, selectedCurrentLong));
+                                points.add(LatLng(22.7196, 75.8577));
+                                // createPloyline();
                                 print("latlocal   ${lat}");
                                 print("longlocal   ${long}");
                                 List<Placemark> placemarks =

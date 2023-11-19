@@ -327,6 +327,8 @@ class SearchLocationState extends State<SearchLocation> with TickerProviderState
                   Opacity(
                     opacity: _listOpacity!.value,
                     child: Column(
+                      // mainAxisSize: MainAxisSize.min,
+
                       children: <Widget>[
                         for (var prediction in _placePredictions)
                           _placeOption(Place.fromJSON(prediction, geocode!)),

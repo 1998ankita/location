@@ -11,6 +11,7 @@ class Geocoding {
     String trimmedAdress = adress.replaceAllMapped(' ', (m) => '+');
     final url =
         "https://maps.googleapis.com/maps/api/geocode/json?address=$trimmedAdress&key=$apiKey&language=$language";
+    print("url ------${url}");
     final response = await http.get(Uri.parse(url));
     final extractedData = json.decode(response.body);
     if (extractedData["error_message"] == null) {
